@@ -1,0 +1,43 @@
+{
+    "manifest_version": 2,
+    "name": "Horizon",
+    "version": "1.0",
+    "author": "Vladan Tomic",
+    "description": "Web application security testing tool for Firefox",
+
+    "icons": {
+        "48": "assets/horizon.svg"
+    },
+
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "webRequest",
+        "<all_urls>"
+    ],
+
+    "background": {
+        "scripts": ["main.js"]
+    },
+
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["page.js"]
+    }],
+
+    "devtools_page": "devtools/devtools.html",
+
+    "browser_action": {
+        "default_icon": {
+            "16": "assets/button-disabled.svg",
+            "32": "assets/button-disabled.svg"
+        }
+    },
+
+    "web_accessible_resources": [
+        "assets/horizon.svg",
+        "assets/button.svg",
+        "assets/button-disabled.svg"
+    ]
+
+}

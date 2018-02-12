@@ -1,0 +1,74 @@
+
+
+.no-border {
+    border: none !important;
+}
+
+.main-tab {
+    padding: 0 !important;
+}
+
+.edit {
+    cursor: pointer !important;
+    margin-left: 8px;
+}
+
+/*
+* Links tab
+*/
+
+.link {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.link:hover {
+    color: inherit;
+}
+
+/*
+* Libraries tab
+*/
+
+.libraries .column.four {
+    min-width: 200px !important;
+}
+
+/*
+* Requests tab
+*/
+
+.requests {
+    box-shadow: none !important;
+    margin-top: 0 !important;
+}
+
+.captured-menu > .ui.menu {
+    display: inline-flex !important;
+}
+
+.captured {
+    margin-top: 0 !important;
+}
+
+.captured .section {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #2224261a;
+}
+
+.clone-window {
+    max-width: 280px !important;
+}
+
+.new-property {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important; 
+}
+
+.new-request {
+    margin: 20px;
+}

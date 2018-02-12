@@ -1,0 +1,35 @@
+{
+  "name": "horizon",
+  "version": "1.0.0",
+  "description": "Web application security testing tool for Firefox",
+  "main": "index.js",
+  "scripts": {
+    "start": "web-ext run -s dist/",
+    "build": "webpack -w --display-error-details --progress --colors",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladan Tomic",
+  "license": "MIT",
+  "dependencies": {
+    "react": "~16.2.0",
+    "react-dom": "~16.2.0",
+    "semantic-ui-css": "~2.2.12",
+    "semantic-ui-react": "~0.77.0"
+  },
+  "devDependencies": {
+    "@types/node": "~8.0.53",
+    "@types/react": "~16.0.25",
+    "@types/react-dom": "~16.0.3",
+    "awesome-typescript-loader": "~3.4.0",
+    "copy-webpack-plugin": "~4.2.3",
+    "css-loader": "~0.28.7",
+    "file-loader": "~1.1.5",
+    "html-loader": "~0.5.1",
+    "source-map-loader": "~0.2.3",
+    "style-loader": "~0.19.0",
+    "typescript": "~2.6.1",
+    "url-loader": "~0.6.2",
+    "web-ext": "~2.2.2",
+    "webpack": "~3.8.1"
+  }
+}
