@@ -66,9 +66,18 @@
     -webkit-user-select: none !important;
     -moz-user-select: none !important;
     -ms-user-select: none !important;
-    user-select: none !important; 
+    user-select: none !important;
 }
 
 .new-request {
     margin: 20px;
+}
+
+.label {
+    max-width: 200px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    height: 16px;
 }

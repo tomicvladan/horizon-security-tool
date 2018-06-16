@@ -11,8 +11,9 @@ export class PropertyEditable extends React.Component<any, any> {
 
         return (
             <span>
-                {this.props.hideName ? null : <span>{name}:&ensp;</span>}
-                <span>{value}</span>
+                {this.props.hideName ? null : <span className='label'>{name}</span>}
+                {this.props.hideName ? null : <span className='label'>:&ensp;</span>}
+                <span className='label'>{value}</span>
                 <a className='edit' onClick={this.props.onEdit} title='Edit value'>
                     <Icon name='write' />
                 </a>

@@ -43,7 +43,7 @@ export class PropertyEditing extends React.Component<any, any> {
                         defaultValue={name}
                         placeholder={this.props.namePlaceholder || 'Name'}
                         onChange={e => this.onNameChange(e)} />
-                    ) : name} :&ensp;
+                    ) : <span className='label'>{name}</span>} :&ensp;
                 </span>
             )
         }
@@ -57,7 +57,7 @@ export class PropertyEditing extends React.Component<any, any> {
                         placeholder={this.props.valuePlaceholder || 'Value'}
                         onChange={e => this.onValueChange(e)} />
                 ) : value}
-                
+
                 <a className='edit' onClick={this.onSave} title='Save'>
                     <Icon name='checkmark' />
                 </a>
