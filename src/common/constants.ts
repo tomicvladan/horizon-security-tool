@@ -15,7 +15,8 @@ export enum Actions {
     DELETE_FORM_PARAMETER,
     UPDATE_FORM_PARAMETER,
     SUBMIT_FORM,
-    REFRESH
+    REFRESH,
+    DOS_ATTACK
 }
 
 export enum PageCommands {

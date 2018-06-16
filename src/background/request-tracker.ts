@@ -24,7 +24,7 @@ export class RequestTracker {
 
     static decoder = new TextDecoder("utf-8");
     static idCharacters = 'abcdefghijklmnopqrstuvwxyz';
-    
+
 
     get requests(): any { return this.requestCollection; }
 
@@ -113,10 +113,10 @@ export class RequestTracker {
 
                     if (value === null && created) {
                         nextProps[prop] = '?';
-        
+
                     } else if (typeof(value) === 'object' || typeof(value) === 'function') {
                         this.mergeParameters(nextProps, prop, value);
-        
+
                     } else if (typeof(value) === 'undefined') {
                         // skip
                     } else {
@@ -155,7 +155,7 @@ export class RequestTracker {
             params = address.query;
 
         } else if (request.requestBody) {
-            
+
             if (request.requestBody.formData) {
                 params = request.requestBody.formData;
             } else {
@@ -214,7 +214,7 @@ export class RequestTracker {
         } else {
             let lastPathIndex = path.length - 1;
             let prop = this.getProperty(captured.parameters, path, lastPathIndex);
-    
+
             prop[path[lastPathIndex]] = value;
         }
 
@@ -239,7 +239,7 @@ export class RequestTracker {
 
     public addProperty(site, url, method, requestId, path, name, value) {
         let captured = this.findCapturedRequest(site + url, method, requestId);
-  
+
         if (!captured) {
             return;
         }
@@ -262,7 +262,7 @@ export class RequestTracker {
 
     public addHeader(site, url, method, requestId, path, name, value) {
         let captured = this.findCapturedRequest(site + url, method, requestId);
-  
+
         if (!captured) {
             return;
         }
@@ -382,7 +382,7 @@ export class RequestTracker {
         let response = await (new Request(method, site + url, captured.headers, captured.parameters)).send();
 
         response.id = this.responseId++;
-        
+
         this._responses.unshift(response);
 
         if (this._responses.length > 100) {
@@ -398,5 +398,35 @@ export class RequestTracker {
         }
 
         this.createNewRequest(method, newUrl, captured);
+    }
+
+    public dosAttack(site, url, method, requestId, count, throttle) {
+        let captured = this.findCapturedRequest(site + url, method, requestId);
+
+        if (!captured || isNaN(count)) {
+            return;
+        }
+
+        if (isNaN(throttle)) {
+            throttle = 0;
+        }
+
+        count = new Number(count);
+
+        const sendRequest = () => {
+            if (count-- === 0) {
+                return;
+            }
+            console.log('DoS - sending request: ', method + ' ' + site + url);
+
+            (new Request(method, site + url, captured.headers, captured.parameters)).send();
+            if (throttle) {
+                setTimeout(() => sendRequest(), throttle)
+            } else {
+                sendRequest();
+            }
+        }
+
+        sendRequest();
     }
 }

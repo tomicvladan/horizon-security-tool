@@ -28,7 +28,7 @@ export class TabHandler {
 
     public updateDevtool(state?: any) {
         let appData: ApplicationData = this.apps.get(this._host);
-        
+
         if (appData && this._devtool) {
             state = state || { state: appData.getState() };
             this._devtool.postMessage(state);
@@ -105,6 +105,9 @@ export class TabHandler {
                     case Actions.REFRESH:
                         this.sendMessageToPage({ action: PageCommands.UPDATE });
                         return;
+                    case Actions.DOS_ATTACK:
+                        rt.dosAttack.apply(rt, args)
+                        return;
                 }
             });
         }
@@ -146,7 +149,7 @@ export class TabHandler {
             this._host = address.host;
 
             let appData: ApplicationData = this.apps.get(this._host);
-            
+
             if (!appData) {
                 appData = new ApplicationData();
                 this.apps.set(this._host, appData);
@@ -166,7 +169,7 @@ export class TabHandler {
 
         this._url = _url;
     }
-    
+
 
     public onRemove() {
         const appData: ApplicationData = this.apps.get(this._host);

@@ -5,6 +5,7 @@ import { Property } from '../json/property';
 import { NewProperty } from '../json/new-property';
 import { PropertyEditing } from '../json/property-editing';
 import { Actions } from '../../../../common/constants';
+import { DosDialog } from './dos-dialog';
 
 
 export class Captured extends React.Component<any, any> {
@@ -13,7 +14,8 @@ export class Captured extends React.Component<any, any> {
         super(props);
 
         this.state = {
-            cloneWindowOpen: false
+            cloneWindowOpen: false,
+            dosWindowOpen: false
         }
 
         this.switchCloneWindow = this.switchCloneWindow.bind(this);
@@ -23,6 +25,12 @@ export class Captured extends React.Component<any, any> {
     switchCloneWindow(open) {
         this.setState({
             cloneWindowOpen: open
+        })
+    }
+
+    switchDosWindow(open) {
+        this.setState({
+            dosWindowOpen: open
         })
     }
 
@@ -106,6 +114,20 @@ export class Captured extends React.Component<any, any> {
                         open={this.state.cloneWindowOpen}
                         on='click'
                         onOpen={() => this.switchCloneWindow(true)}
+                        position='top right' />
+                    &ensp;&ensp;
+                    <Popup
+                        className=''
+                        trigger={<Button basic><Icon name='bomb' /> DoS Attack</Button>}
+                        content={<DosDialog
+                                    onAttack={(count, throttle) => {
+                                        self.onAction(Actions.DOS_ATTACK, [count, throttle]);
+                                        self.switchDosWindow(false);
+                                    }}
+                                    onCancel={() => this.switchDosWindow(false)}></DosDialog>}
+                        open={this.state.dosWindowOpen}
+                        on='click'
+                        onOpen={() => this.switchDosWindow(true)}
                         position='top right' />
                 </div>
             </div>
