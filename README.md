@@ -1,10 +1,10 @@
-#Horizon
+# Horizon
 
 Web application security testing tool.
 
 While browsing web sites, the tool collects the information and shows it in developer tools. It collects information about links, forms and asynchronous HTTP requests. Captured forms and HTTP requests can be modified and resent.
 
-##Usage
+## Usage
 
 To collect the data, the tool must be enabled first, by clicking on the toolbar button. In developer tools, there is a new tab where all collected data for the current web site is shown. If the same site is being browsed in two or more tabs, then the data is merged and complete data is shown in the tool. The tool has the following sections:
 
@@ -23,7 +23,7 @@ DISCLAIMER: This tools is created only for legal security testing of web applica
 
 
 
-##Building
+## Building
 
 Web-ext tool is needed, to install it:
 
